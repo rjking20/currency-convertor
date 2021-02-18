@@ -1,9 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponse
 from forex_python.converter import CurrencyRates,CurrencyCodes
-# Create your views here.
 
-def home(request):
-    return render(request,'index.html',{})
+
 
 def convertor(request):
     context = {
