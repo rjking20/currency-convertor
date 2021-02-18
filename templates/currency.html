@@ -1,0 +1,245 @@
+{% load static %}
+<html lang="en">
+<head>
+	<title>Login V5</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  {% if display %}
+  Visibility:{{display}};
+  {% endif %}
+
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+</style>
+
+    <!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url({% static 'images/bg-01.jpg' %});">
+			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+				<form  action="{% url 'buttonAction' %}" class="login100-form validate-form flex-sb flex-w" method="post">
+					{% csrf_token %}
+					<span class="login100-form-title p-b-53">
+						Convert your currency into other
+					</span>
+
+					<div class="txt1">
+							<span class="txt1">
+							Your currency
+							</span>
+							<span style="position:relative;left:275px;">
+							<select name="curInput">
+                            <option value="USD">USD</option>
+							<option value="INR">INR</option>
+							<option value="EUR">EUR</option>
+							<option value="GBP">GBP</option>
+							<option value="AUD">AUD</option>
+							<option value="CAD">CAD</option>
+							<option value="SGD">SGD</option>
+							<option value="CHF">CHF</option>
+							<option value="MYR">MYR</option>
+							<option value="JPY">JPY</option>
+							<option value="CNY">CNY</option>
+							<option value="NZD">NZD</option>
+							<option value="THB">THB</option>
+							<option value="HUF">HUF</option>
+							<option value="AED">AED</option>
+							<option value="HKD">HKD</option>
+							<option value="MXN">MXN</option>
+							<option value="ZAR">ZAR</option>
+							<option value="PHP">PHP</option>
+							<option value="SEK">SEK</option>
+							<option value="IDR">IDR</option>
+							<option value="SAR">SAR</option>
+							<option value="BRL">BRL</option>
+							<option value="TRY">TRY</option>
+							<option value="KES">KES</option>
+							<option value="KRW">KRW</option>
+							<option value="IQD">IQD</option>
+							<option value="QAR">QAR</option>
+							<option value="PKR">PKR</option>
+							<option value="KWD">KWD</option>
+							<option value="RUB">RUB</option>
+							<option value="ILS">ILS</option>
+						</select>
+							</span>
+					</div>
+
+					
+					<div style="position:relative;top:10px;" class="wrap-input100">
+						{% if input %}
+						<input class="input100" type="text" name="inpt" value="{{input}}" >
+						{% else %}
+						<input class="input100" type="text" placeholder="$" name="inpt" >
+						{% endif %}
+						<span class="focus-input100"></span>
+					</div>
+
+
+						<div class="txt1" style="position:relative;top:20px;">
+						<span class="txt1">
+							Result
+						</span>
+							<span style="position:relative;left:335px;">
+						<select name="curOutput">
+							<option value="INR">INR</option>
+							<option value="EUR">EUR</option>
+							<option value="GBP">GBP</option>
+							<option value="AUD">AUD</option>
+							<option value="CAD">CAD</option>
+							<option value="SGD">SGD</option>
+							<option value="CHF">CHF</option>
+							<option value="MYR">MYR</option>
+							<option value="JPY">JPY</option>
+							<option value="CNY">CNY</option>
+                            <option value="USD">USD</option>
+							<option value="NZD">NZD</option>
+							<option value="THB">THB</option>
+							<option value="HUF">HUF</option>
+							<option value="AED">AED</option>
+							<option value="HKD">HKD</option>
+							<option value="MXN">MXN</option>
+							<option value="ZAR">ZAR</option>
+							<option value="PHP">PHP</option>
+							<option value="SEK">SEK</option>
+							<option value="IDR">IDR</option>
+							<option value="SAR">SAR</option>
+							<option value="BRL">BRL</option>
+							<option value="TRY">TRY</option>
+							<option value="KES">KES</option>
+							<option value="KRW">KRW</option>
+							<option value="IQD">IQD</option>
+							<option value="QAR">QAR</option>
+							<option value="PKR">PKR</option>
+							<option value="KWD">KWD</option>
+							<option value="RUB">RUB</option>
+							<option value="ILS">ILS</option>
+						</select>
+							</span>
+
+					</div>
+
+					
+
+					<div class="wrap-input100" style="position:relative;top:30px;">
+						{% if result %}
+						<div>
+
+                            <input class="input100" type="text" value="{{result}}">
+                        </div>
+                            {% else %}
+                        <div>
+
+                            <input class="input100" type="text" placeholder="&#8377">
+                        </div>
+                            {% endif %}
+						<span class="focus-input100"></span>
+					</div>
+
+					<div style="position:relative;top:25px;"class="container-login100-form-btn m-t-17">
+						<button class="login100-form-btn" name="convert" onclick="doubleClick();">
+							Convert
+						</button>
+					</div>
+
+					<div style="position:relative;top:25px;"class="container-login100-form-btn m-t-17">
+						<button style="background-color:orange;" class="login100-form-btn" name="clean" >
+							Clean
+						</button>
+					</div>
+
+
+					{% if val %}
+					<input type="hidden" name="status" value="{{val}}">
+					{% else %}
+					<input type="hidden" name="status" >
+
+					{% endif %}
+
+                </form>
+				<br><br>
+                {% if click %}
+                <div class="alert">
+                      <span class="closebtn" onclick="this.parentElement.style.display='{{click}}';">&times;</span>
+                      <strong>Warning!</strong> Press clean button then proceed.
+                    </div>
+                {% endif %}
+                </div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+
+	<script>
+		let count =0;
+		function doubleClick(){
+			if (count == 1) {
+				this.disable;
+			}
+			count =1;
+		}
+	</script>
+
+</body>
+</html>
